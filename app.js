@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-fs.readFile('indexA.html', 'utf-8', (err, contenido) => {
+fs.readFileSync('index.html', 'utf-8', (err, contenido) => {
     if(err){
         console.log(err);
     }else{
@@ -11,7 +11,7 @@ fs.readFile('indexA.html', 'utf-8', (err, contenido) => {
 });
 
 
-fs.rename('index.html','main.html',(err) =>{
+fs.renameSync('index.html','main.html',(err) =>{
 
     if(err){
         throw(err);
@@ -22,10 +22,10 @@ fs.rename('index.html','main.html',(err) =>{
 });
 
 
-// add content to file at the end of the file
+//add content to file at the end of the file
 
 
-fs.appendFile('index.html','<p>Hola</p>',(err) =>{
+fs.appendFileSync('index.html','<p>Hola</p>',(err) =>{
     if(err){
         throw(err);
     }else{
@@ -37,7 +37,7 @@ fs.appendFile('index.html','<p>Hola</p>',(err) =>{
 
 
 
-fs.writeFile('index.html','cont 1',(err) =>{
+fs.writeFileSync('index.html','cont 1',(err) =>{
     if(err){
         throw(err);
     }else{
@@ -46,7 +46,7 @@ fs.writeFile('index.html','cont 1',(err) =>{
 });
 
 
-fs.unlink('index copy.html',(err) =>{
+fs.unlinkSync('main.html',(err) =>{
     if(err){
         throw(err);
     }else{
