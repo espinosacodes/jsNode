@@ -1,5 +1,5 @@
 const orderStatus = () => {
-    return Math.random() < 0.8;
+    return Math.random() < 0.5;
 };
 
 const myPizzaOrder = new Promise((resolve, reject) => {
@@ -27,6 +27,6 @@ myPizzaOrder
     .then((orderConfirmed) => {
         console.log(orderConfirmed);
     })
-    .then(null, (orderDeclined) => {
+    .catch((orderDeclined) => {
         console.log(orderDeclined);
     });
