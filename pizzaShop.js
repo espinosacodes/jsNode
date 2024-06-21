@@ -22,4 +22,11 @@ const manageOrderFailure = (orderDeclined) => {
     console.log(orderDeclined);
 }
 
-myPizzaOrder.then(manageOrderSuccess, manageOrderFailure);
+
+myPizzaOrder
+    .then((orderConfirmed) => {
+        console.log(orderConfirmed);
+    })
+    .then(null, (orderDeclined) => {
+        console.log(orderDeclined);
+    });
