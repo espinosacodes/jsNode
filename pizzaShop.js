@@ -24,9 +24,5 @@ const manageOrderFailure = (orderDeclined) => {
 
 
 myPizzaOrder
-    .then((orderConfirmed) => {
-        console.log(orderConfirmed);
-    })
-    .catch((orderDeclined) => {
-        console.log(orderDeclined);
-    });
+    .then(manageOrderSuccess)
+    .catch( manageOrderFailure);
