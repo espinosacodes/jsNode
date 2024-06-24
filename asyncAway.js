@@ -19,7 +19,7 @@ function processOrder(answer){
         console.log('Processing order');
         console.log(`The answer is ${answer}`)
         setTimeout(()=>{
-            resolve('Order processed successfully /n enjoy your TV');
+            resolve('Order processed successfully \nenjoy your TV');
         },2000);
     });
 
@@ -27,7 +27,7 @@ function processOrder(answer){
 
 orderProduct('TV')
     .then(answer => {
-        console.log(answer);
+        console.log('answer is received');
         console.log(answer);
         return processOrder(answer);
     })
