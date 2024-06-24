@@ -25,22 +25,31 @@ function processOrder(answer){
 
 } 
 
-orderProduct('TV')
-    .then(answer => {
-        console.log('answer is received');
-        console.log(answer);
-        return processOrder(answer);
-    })
-    .then(processedAnswer => {
-        console.log(processedAnswer);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+// orderProduct('TV')
+//     .then(answer => {
+//         console.log('answer is received');
+//         console.log(answer);
+//         return processOrder(answer);
+//     })
+//     .then(processedAnswer => {
+//         console.log(processedAnswer);
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
     
 
-
-
+async function buyProduct(product){
+    try {
+        const answer = await orderProduct(product);
+        console.log('answer is received');
+        const processedAnswer = await processOrder(answer);
+        console.log(processedAnswer);
+    } catch(error){    
+    console.log(error);
+    }
+}
+buyProduct('TV');
 
 
 
