@@ -8,6 +8,12 @@ const server = http.createServer((req, res) => {
     switch(method){
         case 'GET':
             return manageGetRequest(req, res);
+        case 'POST':
+            return managePostRequest(req, res);
+        case 'PUT':
+            return managePutRequest(req, res);
+        case 'DELETE':
+            return manageDeleteRequest(req, res);
         default:
             console.log(`the method used is not supported \nthe method is ${method}`);
 
@@ -20,25 +26,55 @@ function manageGetRequest (req,res){
 
     if(path === '/'){
         res.statusCode = 200;
-        res.end('Welcome to the courses page created with Node.js');
+        return res.end('Welcome to the courses page created with Node.js');
     }else if(path === '/courses'){
         res.statusCode = 200;
-        res.end(JSON.stringify(courses.infoCourses));
+        return res.end(JSON.stringify(courses.infoCourses));
 
     } else if(path === '/courses/programming'){
         res.statusCode = 200;
-        res.end(JSON.stringify(courses.infoCourses.programming));
+        return res.end(JSON.stringify(courses.infoCourses.programming));
 
     } else if (path === '/courses/maths'){
         res.statusCode = 200;
-        res.end(JSON.stringify(courses.infoCourses.Maths));
+        return res.end(JSON.stringify(courses.infoCourses.Maths));
 
     } else {
         res.statusCode = 404;
-        res.end('The requested resource was not found');
+        return res.end('The requested resource was not found');
+    }
+
+}
+
+function managePostRequest(req,res){
+    const path = req.url;
+
+    if (path === '/courses/programming'){
+        res.statusCode = 200;
+        return res.end('You have successfully added a programming course');
     }
 
 
+}
+
+function managePutRequest(req,res){
+    const path = req.url;
+
+    if (path === '/courses/programming'){
+        res.statusCode = 200;
+        return res.end('You have successfully updated a programming course');
+    }
+
+}
+
+function manageDeleteRequest(req,res){
+
+    const path = req.url;
+
+    if (path === '/courses/programming'){
+        res.statusCode = 200;
+        return res.end('You have successfully deleted a programming course');
+    }
 
 }
 
