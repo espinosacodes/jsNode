@@ -1,11 +1,29 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const server = http.createServer((req, res) => {
-    res.end('Hello World xdxd');
+const { infoCourses } = require('./data/courses');
+
+// Routers
+const routerProgramming = require('./routers/programming.js');
+app.use('/api/courses/programming', routerProgramming);
+
+const routerMath = require('./routers/math.js');
+app.use('/api/courses/math', routerMath);
+
+// Routing
+app.get('/', (req, res) => {
+    res.send('Welcome to the courses page xd');
 });
 
-const PORT = 3000;
+app.get('/api/courses', (req, res) => {
+    res.send(JSON.stringify(infoCourses));
+});
 
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+
+
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
